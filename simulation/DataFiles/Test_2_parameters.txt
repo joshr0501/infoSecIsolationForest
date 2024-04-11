@@ -1,0 +1,5 @@
+ avgMal = 200
+ muMal = 20
+ avgBenign = 50
+ muBenign = 20
+ Anomaly Freq = 
