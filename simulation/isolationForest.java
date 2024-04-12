@@ -11,7 +11,7 @@ public class isolationForest
     public static void main(String[] args)
     {
         //Anomaly threshold
-        double anomalyThreshold = .75;
+        double anomalyThreshold = .8;
         int numEntries = 1000;
 
         //ArrayList to store the data
@@ -100,14 +100,14 @@ public class isolationForest
         ArrayList<BinarySearchTree> isolationForest = new ArrayList<>();
 
         //We'll do a forest of 500 trees and see if that breaks anything
-        for(int i = 0; i < 500; i++)
+        for(int i = 0; i < 3; i++)
         {
             isolationForest.add(new BinarySearchTree());
         }
 
         System.out.println("Adding values to trees...");
         //Adding all of the elements randomly to each binary search tree
-        for(int i = 0; i < 500; i++)
+        for(int i = 0; i < 3; i++)
         {
             while(!treeInput.isEmpty())
             {
@@ -127,13 +127,13 @@ public class isolationForest
         System.out.println("Calculating path lengths...");
         for(int i = 0; i < numEntries; i++)
         {
-            for(int j = 0; j < 500; j++)
+            for(int j = 0; j < 3; j++)
             {
                 pathLengths[i] += isolationForest.get(j).search(isolationForest.get(j).getRoot(), dataSet.get(i));
             }
 
             //Dividing to get the average
-            pathLengths[i] /= 500;
+            pathLengths[i] /= 3;
             //System.out.println(pathLengths[i]);
         }
 
@@ -181,9 +181,9 @@ public class isolationForest
         }
 
         double truePos = (double)correctDetections/numAnomalies;
-        double trueNeg = (double)correctPass/numBenign;
-        double falsePos = 1 - truePos;
-        double falseNeg = 1 - trueNeg;
+        double falsePos = (double)incorrectDetections/numBenign;
+        double trueNeg = 1 - falsePos;
+        double falseNeg = 1 - truePos;
         //Printing out totals
         System.out.println("--------------------------------------------------------");
         System.out.println("Benign values detected: " + benignValues);
