@@ -2,16 +2,16 @@ clear
 clc
 
 % Benign Data Parameters
-avgB = 50;
-sigB = 20;
+avgB = 75;
+sigB = 25;
 
 %Malicious Data Parameters
-avgM = 200;
-sigM = 20;
+avgM = 125;
+sigM = 25;
 
 
-MalFrequency = 0.033; %Frequency of malicious data
-test = 1;           %Variable to keep track of which set of data, used for file naming
+MalFrequency = 0.1; %Frequency of malicious data
+test = 6;           %Variable to keep track of which set of data, used for file naming
 
 test = num2str(test);
 type = 0;           %If malicious or normal, normal = 0, malicious = 1
